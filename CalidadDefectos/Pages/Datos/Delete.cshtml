@@ -1,0 +1,129 @@
+﻿@page
+@model CalidadDefectos.Pages.Datos.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Formulario_Model.ReleaseDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Formulario_Model.ReleaseDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Formulario_Model.Semana)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Formulario_Model.Semana)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Formulario_Model.Mes)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Formulario_Model.Mes)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Formulario_Model.Anio)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Formulario_Model.Anio)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Formulario_Model.MesAnio)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Formulario_Model.MesAnio)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Formulario_Model.Serial)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Formulario_Model.Serial)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Formulario_Model.Job)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Formulario_Model.Job)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Formulario_Model.Ensamble)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Formulario_Model.Ensamble)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Formulario_Model.Tamanio)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Formulario_Model.Tamanio)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Formulario_Model.Deteccion)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Formulario_Model.Deteccion)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Formulario_Model.Pareto)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Formulario_Model.Pareto)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Formulario_Model.ParetoSN)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Formulario_Model.ParetoSN)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Formulario_Model.Componente)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Formulario_Model.Componente)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Formulario_Model.Elemento)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Formulario_Model.Elemento)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Formulario_Model.Remaches)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Formulario_Model.Remaches)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Formulario_Model.Descripcion)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Formulario_Model.Descripcion)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Formulario_Model.Estacion)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Formulario_Model.Estacion)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Formulario_Model.Comentarios)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Formulario_Model.Comentarios)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="Formulario_Model.ID_Form" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-page="./Index">↩Back to List</a>
+    </form>
+</div>

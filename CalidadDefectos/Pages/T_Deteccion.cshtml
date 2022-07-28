@@ -1,0 +1,105 @@
+﻿@page
+@using Newtonsoft.Json
+@model CalidadDefectos.Pages.T_DeteccionModel
+@{
+    ViewData["Title"] = "Graficas";
+    int cont = 0;
+}
+<div class="text-center">
+    <h1 class="display-4">Detecciones</h1>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.2/chart.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+
+<body>
+    @{
+        int count = 0;
+        //string[] _tags = new string[4];
+        string _tags = "";
+        int[] _values = new int[4] {0,0,0,0} ;
+
+            @foreach (var item in Model.Formulario_Model)
+         {
+          //_tags[count] = @item.Deteccion;
+          _tags = _tags + "," + @item.Deteccion;
+          _values[count] = @item.DetCount;
+          count++;      
+         } 
+         var yourJavaScriptArray = Html.Raw(Json.Serialize(_values));
+             <input type="hidden" id="tags" value="@_tags"/>
+             <input type="hidden" id="values" value="@yourJavaScriptArray"/>           
+    }
+
+    <center>
+    <canvas id="myChart" style="width:100%;max-width:700px"></canvas>
+    </center>
+
+   <table class="table">
+        <thead>
+            <tr>
+            <th>
+                Detección
+            </th>
+            <th>
+                Cantidad
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+            <tbody>
+                @foreach (var item in Model.Formulario_Model)
+                {
+                    <tr>
+                        <td>
+                            @item.Deteccion
+                        </td>
+                        <td>
+                            @item.DetCount
+                        </td>
+                    </tr>
+                    cont = cont + @item.DetCount;
+                } 
+            <tr>
+                <td>
+                    <h6>Totales: </h6>
+                </td>
+                <td>
+                    <h6>@cont</h6>
+                </td>
+            </tr>   
+        </tbody>     
+
+      </table>
+      <a asp-page="./Graficas">↩Back</a>
+    </body>
+<script>
+        if ($('#myChart').length) {
+            var xValues = document.getElementById('tags').value.replace(/\[|\]/g, '').split(',')
+            var yValues = Array.from(document.getElementById('values').value.replace(/\[|\]/g, '').split(',')).map(Number)
+            xValues.shift()
+            var barColors = [
+              "#b91d47",
+              "#00aba9",
+              "#2b5797",
+              "#e8c3b9"
+            ];
+            new Chart("myChart", {
+              type: "pie",
+              data: {
+                labels: xValues,
+                datasets: [{
+                  backgroundColor: barColors,
+                  data: yValues
+                }]
+              },
+              options: {
+                title: {
+                  display: true,
+                  text: "Grafica Detecciones"
+                }
+              }
+            });
+        }
+
+</script>

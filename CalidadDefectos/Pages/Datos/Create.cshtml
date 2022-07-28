@@ -1,0 +1,230 @@
+﻿@page
+@model CalidadDefectos.Pages.Datos.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+<head>
+      <!-- basic -->
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <!-- mobile metas -->
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+      <!-- site metas -->
+      <title>Defectos</title>
+      <!-- bootstrap css -->
+      <link href="@Url.Content("~/css/bootstrap.min.css")" rel="stylesheet" />
+      <!-- style css -->
+      <link href="@Url.Content("~/css/style.css")" rel="stylesheet" />
+      <!-- Responsive-->
+      <link href="@Url.Content("~/css/responsive.css")" rel="stylesheet" />
+      <!-- Scrollbar Custom CSS -->
+      <link href="@Url.Content("~/css/jquery.mCustomScrollbar.min.css")" rel="stylesheet" />
+      <!-- Tweaks for older IEs-->
+      <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+      <!-- Validar-->
+      <script src="@Url.Content("~/js/JavaScript.js")"> </script>
+  </head>
+  <!-- body -->
+   <body class="main-layout">
+       
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="titlepage">
+                     <h2>Formulario</h2>
+                     <span>Defectos en las piezas</span>
+                                       <hr/>
+                  </div>
+               </div>
+            
+         </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <form class="main_form" method="post">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                         <div class="row">
+                            <div class="col-md-12">
+                                <label asp-for="Formulario_Model.ReleaseDate" class="control-label"></label>
+                                <input asp-for="Formulario_Model.ReleaseDate" class="form-control" />
+                                <span asp-validation-for="Formulario_Model.ReleaseDate" class="text-danger"></span>
+                            </div>
+                            <div class="col-md-12">
+                                <label asp-for="Formulario_Model.Semana" class="control-label"></label>
+                                <input asp-for="Formulario_Model.Semana" class="form-control" type="week"/>
+                                <span asp-validation-for="Formulario_Model.Semana" class="text-danger"></span>
+                            </div>
+                            <div class="col-md-12"><!--MES-->
+                                <label asp-for="Formulario_Model.Mes" class="control-label"></label>
+                                <input asp-for="Formulario_Model.Mes" class="form-control" type="month"/>
+                                <span asp-validation-for="Formulario_Model.Mes" class="text-danger"></span>
+                            </div>
+                            <div class="col-md-12"><!--AÑO-->
+                                <label asp-for="Formulario_Model.Anio" class="control-label"></label>
+                                <input asp-for="Formulario_Model.Anio" class="form-control" type="year"/>
+                                <span asp-validation-for="Formulario_Model.Anio" class="text-danger"></span>
+                            </div>
+                            <div class="col-md-12"><!--MES/AÑO-->
+                                <label asp-for="Formulario_Model.MesAnio" class="control-label"></label>
+                                <input asp-for="Formulario_Model.MesAnio" class="form-control"/>
+                                <span asp-validation-for="Formulario_Model.MesAnio" class="text-danger"></span>
+                            </div>
+                            <div class="col-md-12">
+                                <label asp-for="Formulario_Model.Serial" class="control-label"></label>
+                                <input asp-for="Formulario_Model.Serial" class="form-control"/>
+                                <span asp-validation-for="Formulario_Model.Serial" class="text-danger"></span>
+                            </div>
+                            <div class="col-md-12">
+                                <label asp-for="Formulario_Model.Job" class="control-label"></label>
+                                <input asp-for="Formulario_Model.Job" class="form-control" />
+                                <span asp-validation-for="Formulario_Model.Job" class="text-danger"></span>
+                            </div>
+                            <div class="col-md-12">
+                                <label asp-for="Formulario_Model.Ensamble" class="control-label"></label>
+                                <input asp-for="Formulario_Model.Ensamble" class="form-control" />
+                                <span asp-validation-for="Formulario_Model.Ensamble" class="text-danger"></span>
+                            </div>
+                            <div class="col-md-12">
+                                <label asp-for="Formulario_Model.Tamanio" class="control-label"></label>
+                                <select asp-for="Formulario_Model.Tamanio" class="form-control">
+                                    <option>FAN</option>
+                                    <option>4FAN</option>
+                                    <option>6FAN</option>
+                                    <option>8FAN</option>
+                                    <option>10FAN</option>
+                                    <option selected>----</option>
+                                </select>
+                                <span asp-validation-for="Formulario_Model.Tamanio" class="text-danger"></span>
+                            </div>
+                            <div class="col-md-12">
+                                <label asp-for="Formulario_Model.Deteccion" class="control-label"></label>
+                                <select asp-for="Formulario_Model.Deteccion" class="form-control" >
+                                    <option>Linea</option>
+                                    <option>Run Test</option>
+                                    <option>Leak Test</option>
+                                    <option>Liberacion</option>
+                                    <option selected>----</option>
+                                </select>
+                                <span asp-validation-for="Formulario_Model.Deteccion" class="text-danger"></span>
+                            </div>
+                            <div class="col-md-12">
+                                <label asp-for="Formulario_Model.Pareto" class="control-label"></label>
+                                <select asp-for="Formulario_Model.Pareto" class="form-control">
+                                    <option>Apariencia</option>
+                                    <option>Daño</option>
+                                    <option>Desalineado</option>
+                                    <option>Falta de conexión</option>
+                                    <option>Falta de marca testigo</option>
+                                    <option>Faltante proceso</option>
+                                    <option>Flojo/Suelto</option>
+                                    <option>Fuera de spec</option>
+                                    <option>Fuga soldadura</option>
+                                    <option>Fuga torque</option>
+                                    <option>Fuga</option>
+                                    <option>Incorrecto</option>
+                                    <option>Mal cableado</option>
+                                    <option>Mal ensamble</option>
+                                    <option>Mal ruteo</option>
+                                    <option>Posición incorrecta</option>
+                                    <option>Roce</option>
+                                    <option>Omisión de proceso</option>
+                                    <option>Mal etiquetado</option>
+                                    <option>Faltante por inventario</option>
+                                <option selected>----</option>
+                                </select>
+                                <span asp-validation-for="Formulario_Model.Pareto" class="text-danger"></span>
+                            </div>
+                            <div class="col-md-12"><!--ParetoSN-->
+                                <label asp-for="Formulario_Model.ParetoSN" class="control-label"></label>
+                                <input asp-for="Formulario_Model.ParetoSN" class="form-control"/>
+                                <span asp-validation-for="Formulario_Model.ParetoSN" class="text-danger"></span>
+                            </div>
+                            <div class="col-md-12">
+                                <label asp-for="Formulario_Model.Componente" class="control-label"></label>
+                                <input asp-for="Formulario_Model.Componente" class="form-control" />
+                                <span asp-validation-for="Formulario_Model.Componente" class="text-danger"></span>
+                            </div>
+                            <div class="col-md-12"><!--ELEMENTO-->
+                                <label asp-for="Formulario_Model.Elemento" class="control-label"></label>
+                                <input asp-for="Formulario_Model.Elemento" class="form-control"/>
+                                <span asp-validation-for="Formulario_Model.Elemento" class="text-danger"></span>
+                            </div>
+                            <div class="col-md-12"><!--Remaches-->
+                                <label asp-for="Formulario_Model.Remaches" class="control-label"></label>
+                                <input asp-for="Formulario_Model.Remaches" class="form-control"/>
+                                <span asp-validation-for="Formulario_Model.Remaches" class="text-danger"></span>
+                            </div>
+                            <div class="col-md-12">
+                                <label asp-for="Formulario_Model.Descripcion" class="control-label"></label>
+                                <textarea asp-for="Formulario_Model.Descripcion" class="form-control" ></textarea>
+                                <span asp-validation-for="Formulario_Model.Descripcion" class="text-danger"></span>
+                            </div>
+                            <div class="col-md-12">
+                                <label asp-for="Formulario_Model.Estacion" class="control-label"></label>
+                                <select asp-for="Formulario_Model.Estacion" class="form-control">
+                                    <option>Almacen</option>
+                                    <option>AMS</option>
+                                    <option>Back Shop</option>
+                                    <option>Base</option>
+                                    <option>Brazing</option>
+                                    <option>Cableado</option>
+                                    <option>Calidad Linea</option>
+                                    <option>Calidad Pruebas</option>
+                                    <option>Carga y Vacio</option>
+                                    <option>Coils</option>
+                                    <option>Compras</option>
+                                    <option>Compresores</option>
+                                    <option>Empaque</option>
+                                    <option>Evaporador</option>
+                                    <option>General</option>
+                                    <option>Ingenieria</option>
+                                    <option>Leak Test</option>
+                                    <option>Motores</option>
+                                    <option>Provedor</option>
+                                    <option>Run Test</option>
+                                    <option>Sheet Metal</option>
+                                    <option>Top Mount</option>
+                                    <option selected>----</option>
+                                </select>
+                                <span asp-validation-for="Formulario_Model.Estacion" class="text-danger"></span>
+                            </div>
+                            <div class="col-md-12"><!--Comentario-->
+                                <label asp-for="Formulario_Model.Comentarios" class="control-label"></label>
+                                <input asp-for="Formulario_Model.Comentarios" class="form-control"/>
+                                <span asp-validation-for="Formulario_Model.Comentarios" class="text-danger"></span>
+                            </div>
+                            <br /><br />
+                            <hr />
+                            <div class="col-md-12">
+                                <input type="submit" value="Create" class="btn btn-primary" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <br /><br /><br />
+        <!-- <div>
+            <a asp-page="Index">Back to List</a>
+        </div>
+        <br /><br /><br /> -->
+            
+        <!-- Javascript files-->
+      <script src="@Url.Content("~/js/jquery.min.js")"> </script>
+      <script src="@Url.Content("~/js/popper.min.js")"> </script>
+      <script src="@Url.Content("~/js/bootstrap.bundle.min.js")"> </script>
+      <script src="@Url.Content("~/js/jquery-3.0.0.min.js")"> </script>
+      
+      <!-- sidebar -->
+      <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+      <script src="@Url.Content("~/js/jquery.mCustomScrollbar.concat.min.js")"> </script>
+      <script src="@Url.Content("~/js/custom.js")"> </script>
+</body>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,191 @@
+﻿@page
+@model CalidadDefectos.Pages.Datos.IndexModel
+
+@{
+    ViewData["Title"] = "BBDD";
+}
+
+<h1>Dashboard</h1>
+<head>
+      <!-- basic -->
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <!-- mobile metas -->
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+      <!-- site metas -->
+      <title>Defectos</title>
+      <!-- bootstrap css -->
+      @*<link href="@Url.Content("~/css/bootstrap.min.css")" rel="stylesheet" />*@
+      <!-- style css -->
+      <link href="@Url.Content("~/css/style.css")" rel="stylesheet" />
+      <!-- Responsive-->
+      <link href="@Url.Content("~/css/responsive.css")" rel="stylesheet" />
+      <!-- Scrollbar Custom CSS -->
+      @*<link href="@Url.Content("~/css/jquery.mCustomScrollbar.min.css")" rel="stylesheet" />*@
+      <!-- Tweaks for older IEs-->
+      <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+
+  </head>
+  <body class="main-layout">
+              <form>
+                    <p>
+                        Estacion:
+                        <select asp-for="ListaEstaciones" asp-items="Model.Estaciones">
+                        <option value="">All</option>
+                        </select>
+                        Fecha: <input type="date" asp-for="SearchString2" />
+                        Serial: <input type="text" asp-for="SearchString" />            
+                        <input type="submit" value="Buscar" />  
+                    </p>
+                </form>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th><!-- NAME LADERBOARD-->
+                        @Html.DisplayNameFor(model => model.Formulario_Model[0].ID_Form)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Formulario_Model[0].ReleaseDate)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Formulario_Model[0].Semana)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Formulario_Model[0].Mes)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Formulario_Model[0].Anio)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Formulario_Model[0].MesAnio)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Formulario_Model[0].Serial)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Formulario_Model[0].Job)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Formulario_Model[0].Ensamble)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Formulario_Model[0].Tamanio)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Formulario_Model[0].Deteccion)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Formulario_Model[0].Pareto)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Formulario_Model[0].ParetoSN)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Formulario_Model[0].Componente)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Formulario_Model[0].Elemento)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Formulario_Model[0].Remaches)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Formulario_Model[0].Descripcion)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Formulario_Model[0].Estacion)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Formulario_Model[0].Comentarios)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+            @foreach (var item in Model.Formulario_Model) {
+                    <tr>
+                        <td>
+                        @Html.DisplayFor(modelItem => item.ID_Form)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ReleaseDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Semana)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Mes)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Anio)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MesAnio)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Serial)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Job)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Ensamble)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Tamanio)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Deteccion)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Pareto)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ParetoSN)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Componente)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Elemento)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Remaches)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Descripcion)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Estacion)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Comentarios)
+                        </td>
+                        <td>
+                            <a asp-page="./Edit" asp-route-id="@item.ID_Form">Edit</a><br/>  
+                            <a asp-page="./Details" asp-route-id="@item.ID_Form">Details</a> <br/> 
+                            <a asp-page="./Delete" asp-route-id="@item.ID_Form">Delete</a>
+                        </td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+            <br /><br/><br />
+                        <div>
+                            <a asp-page="./Index">↩Back to List</a>
+                        </div>
+                <br /><br/><br /> 
+  
+    <!-- Javascript files-->
+      <script src="@Url.Content("~/js/jquery.min.js")"> </script>
+      <script src="@Url.Content("~/js/popper.min.js")"> </script>
+      <script src="@Url.Content("~/js/bootstrap.bundle.min.js")"> </script>
+      <script src="@Url.Content("~/js/jquery-3.0.0.min.js")"> </script>
+      
+      <!-- sidebar -->
+      <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+      <script src="@Url.Content("~/js/jquery.mCustomScrollbar.concat.min.js")"> </script>
+      <script src="@Url.Content("~/js/custom.js")"> </script>
+</body>

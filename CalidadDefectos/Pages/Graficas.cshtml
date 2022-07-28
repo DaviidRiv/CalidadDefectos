@@ -1,0 +1,95 @@
+﻿@page
+@model CalidadDefectos.Pages.GraficasModel
+@{
+    ViewData["Title"] = "Graficas";
+}
+<div class="text-center">
+    <h1 class="display-4">DPU</h1>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.2/chart.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+
+  <body>
+      @{
+        int count = 0;
+        string _tags = "";
+        int[] _values = new int[50];
+
+                    @foreach (var item in Model.Formulario_Model)
+             {
+              _tags = _tags + "," + @item.Jobs;
+              _values[count] = @item.JobCount;
+              count++;      
+             } 
+         var yourJavaScriptArray = Html.Raw(Json.Serialize(_values));
+                     <input type="hidden" id="tags" value="@_tags"/>
+                     <input type="hidden" id="values" value="@yourJavaScriptArray"/>           
+    }
+    <center>
+        <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+    </center>
+
+
+    <table class="table">
+        <thead>
+            <tr>
+            <th>
+                Jobs
+            </th>
+            <th>
+                Cantidad
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Formulario_Model)
+            {
+                        <tr>
+                            <td>
+                        @item.Jobs
+                            </td>
+                            <td>
+                        @item.JobCount
+                            </td>
+                        </tr>
+            }    
+        </tbody>
+    </table>
+    <a asp-page="./T_Deteccion">Deteccion</a>
+    <a> | </a>
+    <a asp-page="./T_Paretos">Paretos</a>
+  </body>
+
+<script>
+    if ($('#myChart').length) {
+        var xValues = document.getElementById('tags').value.replace(/\[|\]/g, '').split(',')
+        var yValues = Array.from(document.getElementById('values').value.replace(/\[|\]/g, '').split(',')).map(Number)
+        xValues.shift()
+        new Chart("myChart", {
+          type: "line",
+          data: {
+            labels: xValues,
+            datasets: [{
+                  fill: false,
+                  lineTension: 1,
+                  backgroundColor: "rgba(0,0,255,1.0)",
+                  borderColor: "rgba(0,0,255,0.1)",
+                  data: yValues
+            }]
+          },
+          options: {
+                legend: {
+                    display: false,
+                },
+                scales: {
+                  yAxes: [{ticks: {min: 0, max:50}}],
+                },
+                title: {
+                  display: true,
+                  text: "Gráfica DPU"
+                }
+          }
+        });
+    }
+</script>

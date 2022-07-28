@@ -1,0 +1,22 @@
+﻿@using System.Security.Principal
+<style>
+        #SISO {
+            border-bottom-width: thin;
+            border-bottom-style: solid;
+            border-bottom-color: #000;
+        }
+  </style>
+<ul class="navbar-nav">
+@if (User.Identity?.IsAuthenticated == true)
+{
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="MicrosoftIdentity" asp-controller="Account" asp-action="SignOut" id="SISO" >Sign out</a>
+        </li>
+}
+else
+{
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="MicrosoftIdentity" asp-controller="Account" asp-action="SignIn" id="SISO">Sign in</a>
+        </li>
+}
+</ul>

@@ -1,0 +1,35 @@
+@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Index";
+}
+<head>
+<link href="@Url.Content("~/css/style.css")" rel="stylesheet" />
+      <!-- Responsive-->
+      <link href="@Url.Content("~/css/responsive.css")" rel="stylesheet" />
+      <!-- Scrollbar Custom CSS -->
+      @*<link href="@Url.Content("~/css/jquery.mCustomScrollbar.min.css")" rel="stylesheet" />*@
+      <!-- Tweaks for older IEs-->
+      <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+
+</head>
+<body class="main-layout">
+    <div class="text-center">
+        <h1 class="display-4">Welcome</h1>
+    </div>
+
+    <h1><div>@ViewData["GraphApiResult"]</div></h1>
+    <h1><div>@ViewData["GraphApiResult2"]</div></h1>
+
+      <!-- Javascript files-->
+      <script src="@Url.Content("~/js/jquery.min.js")"> </script>
+      <script src="@Url.Content("~/js/popper.min.js")"> </script>
+      <script src="@Url.Content("~/js/bootstrap.bundle.min.js")"> </script>
+      <script src="@Url.Content("~/js/jquery-3.0.0.min.js")"> </script>
+      
+      <!-- sidebar -->
+      <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+      <script src="@Url.Content("~/js/jquery.mCustomScrollbar.concat.min.js")"> </script>
+      <script src="@Url.Content("~/js/custom.js")"> </script>
+</body>
