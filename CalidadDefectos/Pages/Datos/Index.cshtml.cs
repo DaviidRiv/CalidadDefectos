@@ -29,7 +29,7 @@ namespace CalidadDefectos.Pages.Datos
         [BindProperty(SupportsGet = true)]
         public string? SearchString { get; set; }
         [BindProperty(SupportsGet = true)]
-        public String? SearchString2 { get; set; }
+        public string? SearchString2 { get; set; }
         public SelectList? Estaciones { get; set; } 
         [BindProperty(SupportsGet = true)]
         public string? ListaEstaciones { get; set; } 

@@ -11,9 +11,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Identity.Web;
 using System.Net;
 using Microsoft.Graph;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CalidadDefectos.Pages.Datos
 {
+    //, Authorize(Policy = "Administradores_Defectos")
     [AuthorizeForScopes(ScopeKeySection = "MicrosoftGraph:Scopes")]
     public class UsuarioModel : PageModel
     {

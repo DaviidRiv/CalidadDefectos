@@ -16,5 +16,6 @@ namespace CalidadDefectos.Data
         }
 
         public DbSet<CalidadDefectos.Models.Formulario_Model> Formulario_Model { get; set; } = default!;
+        public DbSet<CalidadDefectos.Models.Formulario_Model> Formulario_Model2 { get; set; } = default!;
     }
 }

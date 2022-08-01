@@ -15,5 +15,6 @@ namespace CalidadDefectos.Models
         public DateTime? ReleaseDate { get; set; }
         public string Paretos { get; set; } = string.Empty;
         public int ParetCount { get; set; }
+        public string Meses { get; set; } = string.Empty;
     }
 }

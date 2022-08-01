@@ -1,7 +1,7 @@
-@page
-@model IndexModel
+﻿@page
+@model CalidadDefectos.Pages.I_UserModel
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "IndexUser";
 }
 <head>
 <link href="@Url.Content("~/css/style.css")" rel="stylesheet" />
@@ -18,10 +18,9 @@
     <div class="text-center">
         <h1 class="display-4">Welcome</h1>
     </div>
-    <h1>ADMIN</h1>
+    <h1>USUARIO</h1>
     <h1><div>@ViewData["GraphApiResult"]</div></h1>
     <h1><div>@ViewData["GraphApiResult2"]</div></h1>
-    
 
       <!-- Javascript files-->
       <script src="@Url.Content("~/js/jquery.min.js")"> </script>
@@ -33,6 +32,4 @@
       <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
       <script src="@Url.Content("~/js/jquery.mCustomScrollbar.concat.min.js")"> </script>
       <script src="@Url.Content("~/js/custom.js")"> </script>
-      <a asp-page="./I_User">USER</a>
-      <a asp-page="./Graficas">Back</a>
 </body>

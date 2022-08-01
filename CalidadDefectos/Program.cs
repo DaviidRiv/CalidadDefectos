@@ -19,14 +19,13 @@ builder.Services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)
 
 builder.Services.AddAuthorization(options =>
 {
-    options.AddPolicy("Usuarios_Defectos", policyBuilder => policyBuilder.RequireClaim("gropus",builder.Configuration.GetValue<string>("AzureSecurityGroup:ReporterObjectId")));
-    options.AddPolicy("Administradores_Defectos", policyBuilder => policyBuilder.RequireClaim("gropus", builder.Configuration.GetValue<string>("AzureSecurityGroup:ReporterObjectId")));
+    options.AddPolicy("Usuarios_Defectos", policyBuilder => policyBuilder.RequireClaim("groups",builder.Configuration.GetValue<string>("AzureSecurityGroup:UserObjectId")));
+    options.AddPolicy("Administradores_Defectos", policyBuilder => policyBuilder.RequireClaim("groups", builder.Configuration.GetValue<string>("AzureSecurityGroup:AdminObjectId")));
 
 });
 
 // Add services to the container.
-builder.Services.AddRazorPages()
-    .AddMicrosoftIdentityUI();
+builder.Services.AddRazorPages().AddMicrosoftIdentityUI();
 builder.Services.AddDbContext<CalidadDefectosContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("CalidadDefectosContext") ?? throw new InvalidOperationException("Connection string 'CalidadDefectosContext' not found.")));
 
@@ -39,6 +38,7 @@ if (!app.Environment.IsDevelopment())
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
+
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();

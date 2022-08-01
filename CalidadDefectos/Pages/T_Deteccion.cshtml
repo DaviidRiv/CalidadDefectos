@@ -1,9 +1,13 @@
 ﻿@page
 @using Newtonsoft.Json
+@using CalidadDefectos.Models;
 @model CalidadDefectos.Pages.T_DeteccionModel
 @{
     ViewData["Title"] = "Graficas";
     int cont = 0;
+    string _tags = "";
+    int[] _values = new int[] {0,0,0,0};
+    int count = 0;
 }
 <div class="text-center">
     <h1 class="display-4">Detecciones</h1>
@@ -13,54 +17,88 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 
 <body>
-    @{
-        int count = 0;
-        //string[] _tags = new string[4];
-        string _tags = "";
-        int[] _values = new int[4] {0,0,0,0} ;
-
-            @foreach (var item in Model.Formulario_Model)
-         {
-          //_tags[count] = @item.Deteccion;
-          _tags = _tags + "," + @item.Deteccion;
-          _values[count] = @item.DetCount;
-          count++;      
-         } 
-         var yourJavaScriptArray = Html.Raw(Json.Serialize(_values));
-             <input type="hidden" id="tags" value="@_tags"/>
-             <input type="hidden" id="values" value="@yourJavaScriptArray"/>           
+    <form>
+          <p>
+             Detección:
+                        <select asp-for="ListaDetecciones" asp-items="Model.Detecciones">
+                        <option value="">All</option>
+                        </select> 
+                        <input type="submit" value="Buscar" onclick="location.reload()" />
+          </p>
+    </form>
+    @{   
+        @foreach (var item2 in Model.Formulario_Model2)
+        {
+             _tags = _tags + "," + @item2.Deteccion;
+             _values[count] = 1;
+             count++;
+                
+        }
+        //@foreach (var item in Model.Formulario_Model)
+        //{
+        //    _tags = _tags + "," + @item.Deteccion;
+        //    _values[count] = @item.DetCount;
+        //    count++;      
+        //}
+        var yourJavaScriptArray = Html.Raw(Json.Serialize(_values));
+            <input type="hidden" id="tags" value="@_tags"/>
+            <input type="hidden" id="values" value="@yourJavaScriptArray"/>
     }
 
     <center>
     <canvas id="myChart" style="width:100%;max-width:700px"></canvas>
     </center>
+    
 
    <table class="table">
         <thead>
             <tr>
-            <th>
-                Detección
-            </th>
-            <th>
-                Cantidad
-            </th>
-        </tr>
+                <th>
+                    Mes
+                </th>
+                <th>
+                    Detección
+                </th>
+                <th>
+                    Cantidad
+                </th>
+            </tr>
         </thead>
-        <tbody>
-            <tbody>
-                @foreach (var item in Model.Formulario_Model)
-                {
+        <tbody>    
+            @{
+               @foreach (var item in Model.Formulario_Model2){        
                     <tr>
                         <td>
-                            @item.Deteccion
+                            @Html.DisplayFor(modelItem => item.Mes)  
+                        </td>
+                        <td>                
+                            @Html.DisplayFor(modelItem => item.Deteccion)   
                         </td>
                         <td>
-                            @item.DetCount
+                            1
                         </td>
-                    </tr>
-                    cont = cont + @item.DetCount;
-                } 
+                    </tr> 
+                     cont = cont + 1;
+                }    
+                //@foreach (var item in Model.Formulario_Model){        
+                //    <tr>
+                //        <td>
+                              
+                //        </td>
+                //        <td>                
+                //            @item.Deteccion
+                //        </td>
+                //        <td>
+                //            @item.DetCount
+                //        </td>
+                //    </tr> 
+                //    cont = cont + DetCont;
+                //}  
+               
+            }
+            
             <tr>
+                <td></td>
                 <td>
                     <h6>Totales: </h6>
                 </td>

@@ -13,6 +13,12 @@ using System.Data.SqlClient;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using CalidadDefectos.Data;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
 
 namespace CalidadDefectos.Pages
 {
@@ -20,24 +26,57 @@ namespace CalidadDefectos.Pages
     public class T_DeteccionModel : PageModel
     {
         private readonly GraphServiceClient _graphServiceClient;
-        private readonly CalidadDefectos.Data.CalidadDefectosContext _context;
+        public readonly CalidadDefectos.Data.CalidadDefectosContext _context;
         public T_DeteccionModel(CalidadDefectos.Data.CalidadDefectosContext context, GraphServiceClient graphServiceClient)
         {
             _context = context;
             _graphServiceClient = graphServiceClient; ;
         }
         public IList<EnrollmentDeteccionGroups> Formulario_Model { get; set; } = default!;
+        public IList<Formulario_Model> Formulario_Model2 { get; set; } = default!;
+        [BindProperty(SupportsGet = true)]
+        public string? SearchString { get; set; }
+        public SelectList? Detecciones { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string? ListaDetecciones { get; set; }
         public async Task OnGetAsync()
         {
+            IQueryable<string> genreQuery = from m in _context.Formulario_Model2
+                                            orderby m.Mes
+                                            select m.Mes;
+
+            var datos = from m in _context.Formulario_Model2
+                        select m;
+             
             IQueryable<EnrollmentDeteccionGroups> data = from d in _context.Formulario_Model
                                                          group d by d.Deteccion
                                                          into dateGroup
                                                          select new EnrollmentDeteccionGroups()
                                                          {
-                                                             Deteccion = dateGroup.Key,
-                                                             DetCount = dateGroup.Count()
+                                                            Deteccion = dateGroup.Key, 
+                                                            DetCount = dateGroup.Count()
                                                          };
+            //IQueryable<EnrollmentDeteccionGroups> data2 = from d in _context.Formulario_Model2
+            //                                              group d by d.Mes
+            //                                              into dateGroup
+            //                                              select new EnrollmentDeteccionGroups()
+            //                                              {
+            //                                                  Meses = dateGroup.Key
+            //                                              };
+            if (!string.IsNullOrEmpty(SearchString))
+            {
+                datos = datos.Where(s => s.Mes.Contains(SearchString));
+                
+            }
+            if (!string.IsNullOrEmpty(ListaDetecciones))
+            {
+                datos = datos.Where(x => x.Mes == ListaDetecciones);
+            }
+            Detecciones = new SelectList(await genreQuery.Distinct().ToListAsync());
             Formulario_Model = await data.ToListAsync();
+            Formulario_Model2 = await datos.ToListAsync();
         }
+
+        
     }
 }
