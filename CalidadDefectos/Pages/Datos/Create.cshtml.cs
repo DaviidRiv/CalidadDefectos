@@ -39,7 +39,7 @@ namespace CalidadDefectos.Pages.Datos
             _context.Formulario_Model.Add(Formulario_Model);
             await _context.SaveChangesAsync();
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("./Dashboard");
         }
     }
 }

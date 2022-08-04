@@ -66,7 +66,7 @@ namespace CalidadDefectos.Pages.Datos
                 }
             }
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("./Dashboard");
         }
 
         private bool Formulario_ModelExists(int id)

@@ -11,9 +11,16 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Identity.Web;
 using System.Net;
 using Microsoft.Graph;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
+
 
 namespace CalidadDefectos.Pages.Datos
 {
+    // Authorize(Policy = "Administradores_Defectos")
     [AuthorizeForScopes(ScopeKeySection = "MicrosoftGraph:Scopes")]
     public class IndexModel : PageModel
     {
@@ -43,10 +50,6 @@ namespace CalidadDefectos.Pages.Datos
             var datos = from m in _context.Formulario_Model
                         select m;
 
-            if (_context.Formulario_Model != null)
-            {
-                Formulario_Model = await _context.Formulario_Model.ToListAsync();
-            }
             if (!string.IsNullOrEmpty(SearchString))
             {
                 datos = datos.Where(s => s.Serial.Contains(SearchString));

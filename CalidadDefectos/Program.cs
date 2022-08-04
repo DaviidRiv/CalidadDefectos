@@ -7,6 +7,7 @@ using Microsoft.Identity.Web.UI;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
+
 var builder = WebApplication.CreateBuilder(args);
 
 var initialScopes = builder.Configuration["DownstreamApi:Scopes"]?.Split(' ') ?? builder.Configuration["MicrosoftGraph:Scopes"]?.Split(' ');
@@ -24,10 +25,15 @@ builder.Services.AddAuthorization(options =>
 
 });
 
+//builder = WebApplication.CreateBuilder(new WebApplicationOptions
+//{
+//    EnvironmentName = Environments.Development
+//});
+
 // Add services to the container.
 builder.Services.AddRazorPages().AddMicrosoftIdentityUI();
-builder.Services.AddDbContext<CalidadDefectosContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("CalidadDefectosContext") ?? throw new InvalidOperationException("Connection string 'CalidadDefectosContext' not found.")));
+builder.Services.AddDbContext<CalidadDefectosContext>(options =>    options.UseSqlServer(builder.Configuration.GetConnectionString("CalidadDefectosContext") ?? throw new InvalidOperationException("Connection string 'CalidadDefectosContext' not found.")));
+builder.Services.AddApplicationInsightsTelemetry(builder.Configuration["APPLICATIONINSIGHTS_CONNECTION_STRING"]);
 
 var app = builder.Build();
 
