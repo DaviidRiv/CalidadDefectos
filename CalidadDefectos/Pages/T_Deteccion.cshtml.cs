@@ -18,7 +18,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
+//using System.Web.Mvc;
 
 namespace CalidadDefectos.Pages
 {
@@ -63,20 +63,15 @@ namespace CalidadDefectos.Pages
             //                                              {
             //                                                  Meses = dateGroup.Key
             //                                              };
+            
             if (!string.IsNullOrEmpty(SearchString))
             {
-                datos = datos.Where(s => s.Mes.Contains(SearchString));
-                
+                datos = datos.Where(s => s.ReleaseDate.ToString().Contains(SearchString));
             }
-            if (!string.IsNullOrEmpty(ListaDetecciones))
-            {
-                datos = datos.Where(x => x.Mes == ListaDetecciones);
-            }
-            Detecciones = new SelectList(await genreQuery.Distinct().ToListAsync());
             Formulario_Model = await data.ToListAsync();
             Formulario_Model2 = await datos.ToListAsync();
         }
+       
 
-        
     }
 }

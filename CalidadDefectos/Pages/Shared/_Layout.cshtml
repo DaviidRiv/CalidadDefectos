@@ -24,8 +24,8 @@
     <link rel="stylesheet" href="~/CalidadDefectos.styles.css" asp-append-version="true" />
     <style>
         #GfG {
-            width: 250px;
-            height: 100px;
+            width: 350px;
+            height: 80px;
             <!--background-color: green;-->
             <!--color: white;-->
         }
@@ -33,7 +33,8 @@
 </head>
 <body>
     <header>
-        
+        @*@{
+            if(User.IsInRole("Administrador")){*@
                    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
                         <div class="container">
                             <a class="navbar-brand" asp-area="" asp-page="/Index"><img src="~/images/DAIKIN_logo.svg.png" alt="LogoDaikin" id="GfG"/></a>
@@ -57,9 +58,8 @@
                             </div>
                         </div>
                    </nav>   
-                   @*@{
-            if (User.IsInRole("Administrador")){
-            }else if(User.IsInRole("Usuario")){
+                   
+           @* }else if(User.IsInRole("Usuario")){
                 <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
                         <div class="container">
                             <a class="navbar-brand" asp-area="" asp-page="/UserIn"><img src="~/images/DAIKIN_logo.svg.png" alt="LogoDaikin" id="GfG"/></a>

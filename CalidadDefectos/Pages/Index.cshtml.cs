@@ -5,6 +5,13 @@ using Microsoft.Identity.Web;
 using Microsoft.AspNetCore.Authorization;
 using System.Net;
 using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using CalidadDefectos.Data;
+using CalidadDefectos.Models;
 
 namespace CalidadDefectos.Pages
 {

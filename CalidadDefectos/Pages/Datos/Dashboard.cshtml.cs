@@ -37,6 +37,8 @@ namespace CalidadDefectos.Pages.Datos
         public string? SearchString { get; set; }
         [BindProperty(SupportsGet = true)]
         public string? SearchString2 { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string? SearchString3 { get; set; }
         public SelectList? Estaciones { get; set; } 
         [BindProperty(SupportsGet = true)]
         public string? ListaEstaciones { get; set; } 
@@ -57,6 +59,10 @@ namespace CalidadDefectos.Pages.Datos
             if (!string.IsNullOrEmpty(SearchString2))
             {
                 datos = datos.Where(s => s.ReleaseDate.ToString().Contains(SearchString2));
+            }
+            if (!string.IsNullOrEmpty(SearchString3))
+            {
+                datos = datos.Where(s => s.Job.Contains(SearchString3));
             }
             if (!string.IsNullOrEmpty(ListaEstaciones))
             {
